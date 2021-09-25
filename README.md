@@ -10,13 +10,13 @@ Config Library
 <!-- ConfigLib -->
 <dependency>
   <groupId>com.github.Drc-DEV</groupId>
-  <artifactId>configlib</artifactId>
-  <version>1.1</version>
+  <artifactId>configlibbungee</artifactId>
+  <version>1.0</version>
   <scope>compile</scope>
 </dependency>
 
 <relocation>
-  <pattern>pro.dracarys.configlib</pattern>
+  <pattern>pro.dracarys.configlibbungee</pattern>
   <shadedPattern>groupid.artifactid.shade.configlib</shadedPattern>
 </relocation>
 ```

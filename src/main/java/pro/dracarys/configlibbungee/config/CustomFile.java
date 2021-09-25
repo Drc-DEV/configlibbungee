@@ -1,8 +1,10 @@
-package pro.dracarys.configlib.config;
+package pro.dracarys.configlibbungee.config;
 
-import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.plugin.java.JavaPlugin;
-import pro.dracarys.configlib.ConfigLib;
+import net.md_5.bungee.api.plugin.Plugin;
+import net.md_5.bungee.config.Configuration;
+import net.md_5.bungee.config.ConfigurationProvider;
+import net.md_5.bungee.config.YamlConfiguration;
+import pro.dracarys.configlibbungee.ConfigLib;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,12 +12,12 @@ import java.util.logging.Level;
 
 public abstract class CustomFile implements ICustomFile {
 
-    private YamlConfiguration config;
+    private Configuration config;
     private File file;
     private File configFile;
 
     public CustomFile(String parent) {
-        JavaPlugin instance = ConfigLib.getPlugin();
+        Plugin instance = ConfigLib.getPlugin();
         if (!instance.getDataFolder().exists())
             instance.getDataFolder().mkdir();
 
@@ -39,12 +41,16 @@ public abstract class CustomFile implements ICustomFile {
     }
 
     public void reloadConfig() {
-        config = YamlConfiguration.loadConfiguration(configFile);
+        try {
+            config = ConfigurationProvider.getProvider(YamlConfiguration.class).load(configFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void saveConfig() {
         try {
-            config.save(configFile);
+            ConfigurationProvider.getProvider(YamlConfiguration.class).save(config, configFile);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -54,7 +60,7 @@ public abstract class CustomFile implements ICustomFile {
         return configFile;
     }
 
-    public YamlConfiguration getConfig() {
+    public Configuration getConfig() {
         return config;
     }
 

@@ -1,4 +1,4 @@
-package pro.dracarys.configlib.config;
+package pro.dracarys.configlibbungee.config;
 
 public interface ICustomFile<T> {
 

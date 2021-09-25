@@ -1,7 +1,7 @@
-package pro.dracarys.configlib;
+package pro.dracarys.configlibbungee;
 
-import org.bukkit.plugin.java.JavaPlugin;
-import pro.dracarys.configlib.config.CustomFile;
+import net.md_5.bungee.api.plugin.Plugin;
+import pro.dracarys.configlibbungee.config.CustomFile;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -9,13 +9,13 @@ import java.util.Map;
 
 public class ConfigLib {
 
-    private static JavaPlugin plugin;
+    private static Plugin plugin;
 
-    public static JavaPlugin getPlugin() {
+    public static Plugin getPlugin() {
         return plugin;
     }
 
-    public static void setPlugin(JavaPlugin pl) {
+    public static void setPlugin(Plugin pl) {
         plugin = pl;
     }
 
